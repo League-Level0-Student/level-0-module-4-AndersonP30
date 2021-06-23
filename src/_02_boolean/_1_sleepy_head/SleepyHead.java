@@ -1,5 +1,10 @@
 package _02_boolean._1_sleepy_head;
 
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Graphics;
+
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import org.jointheleague.graphical.robot.Robot;
 
@@ -13,9 +18,19 @@ public class SleepyHead {
 		boolean isWeekend;
 		// Write code to ask the user what day it is.
         
+	String day = JOptionPane.showInputDialog("What day is it?");
+		
 		// Set the boolean isWeekend based on the value they enter
 		
-		
+		if (day.equalsIgnoreCase("saturday")||day.equalsIgnoreCase("sunday")) {
+			isWeekend = true;
+			JOptionPane.showMessageDialog(null, "You can sleep in");
+		}
+		else {
+			isWeekend = false;
+			JOptionPane.showMessageDialog(null, "Go to school");
+		}
+	
 		// If it is the weekend, tell the user they get to sleep in.
 		
 		// If it is not the weekend, tell them to get out of bed and go to school!
@@ -26,6 +41,16 @@ public class SleepyHead {
 		boolean passedExam;
 		// Write code to ask the user what percentage they scored in their last exam
 
+		String score = JOptionPane.showInputDialog("What score did you get on your last exam");
+		int scoreint = Integer.parseInt(score);
+		if (scoreint >= 70) {
+			passedExam = true;
+			JOptionPane.showMessageDialog(null, "Nice");
+		}
+		else {
+			passedExam = false;
+			JOptionPane.showMessageDialog(null, "too bad");
+		}
 		
 		// If they scored more than 70, they passed the exam.
 		// Set the boolean passedExam based on their score.
@@ -49,17 +74,32 @@ public class SleepyHead {
 
 		}
 		// Tell the user "game is over" 
-		
+		JOptionPane.showMessageDialog(null, "The game is over");
 		
 		/***********************   RED SQUARE  ********************/
 		
 		boolean isRed;
 		// Ask the user what color to draw with. Based on their answer, set the isRed variable
-		
-		
+		String color = JOptionPane.showInputDialog("What color do you want");
+		if (color.equalsIgnoreCase("red")) {
+			isRed = true;
+		}
+		else {
+			isRed = false;
+		}
 		boolean isSquare;		
 		// Now ask the user what shape to draw. Based on their answer, set the isSquare variable
 		
+		String shape = JOptionPane.showInputDialog("What shape do you want?");
+		
+		if (isRed && isSquare) {
+			Component panel = new MyPanel();
+			JFrame frame = new JFrame("Red Rectangle");
+			frame.setSize(300, 300);
+			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			frame.add(panel);
+			
+		}
 		
 		// Now you MUST use the && operator to join the booleans for this code. 
 		// Ask your teacher if you are not sure how
@@ -74,4 +114,11 @@ public class SleepyHead {
 		Robot rob = new Robot();
 		// Complete the rest of this method
 	}	
+}
+
+class MyPanel extends JPanel{
+	public void paint(Graphics g) {
+		g.setColor(Color.RED);
+		g.fillRect(10, 10, 100, 100);
+	}
 }
