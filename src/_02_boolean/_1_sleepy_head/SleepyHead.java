@@ -91,34 +91,45 @@ public class SleepyHead {
 		// Now ask the user what shape to draw. Based on their answer, set the isSquare variable
 		
 		String shape = JOptionPane.showInputDialog("What shape do you want?");
-		
-		if (isRed && isSquare) {
-			Component panel = new MyPanel();
-			JFrame frame = new JFrame("Red Rectangle");
-			frame.setSize(300, 300);
-			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			frame.add(panel);
-			
+		if (shape.equalsIgnoreCase("square")) {
+			isSquare = true;
 		}
+		else {
+			isSquare = false;
+		}
+		
 		
 		// Now you MUST use the && operator to join the booleans for this code. 
 		// Ask your teacher if you are not sure how
 		// Use an if statement to ONLY draw a red square when it has been requested (use the method below)
 		// otherwise, tell the user you don't know how to draw that shape
-		
+		if(isRed && isSquare) {
+			drawRedSquare();
+		}
 
 	}
 
 	
 	static void drawRedSquare() {
 		Robot rob = new Robot();
+		rob.setSpeed(10000);
+		rob.penDown();
+		rob.setPenColor(250, 1, 2);
+		rob.move(100);
+		rob.turn(90);
+		rob.move(100);
+		rob.turn(90);
+		rob.move(100);
+		rob.turn(90);
+		rob.move(100);
+		rob.turn(90);
 		// Complete the rest of this method
 	}	
 }
 
-class MyPanel extends JPanel{
-	public void paint(Graphics g) {
-		g.setColor(Color.RED);
-		g.fillRect(10, 10, 100, 100);
-	}
-}
+//class MyPanel extends JPanel{
+//	public void paint(Graphics g) {
+//		g.setColor(Color.RED);
+//		g.fillRect(10, 10, 100, 100);
+//	}
+//}
